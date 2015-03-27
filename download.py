@@ -1,5 +1,8 @@
 import urllib
-# TODO: read in a text file containing file urls and file names, then download all files listed
+import os
 
+save_directory = "./gapps/"
 def download(apk_url, number):
-  urllib.urlretrieve(apk_url, "sample.zip/" + str(number) + ".apk")
+  if not os.path.exists(save_directory):
+    os.makedirs(save_directory)
+  urllib.urlretrieve(apk_url, save_directory + str(number) + ".apk")
