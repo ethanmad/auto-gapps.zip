@@ -1,5 +1,6 @@
 import read_list, download
 import find_apk
+
 # This script runs the other scripts.
 # Sequence is as follows:
 #   1) Read app_list and store names and URLs in memory.
@@ -10,8 +11,15 @@ import find_apk
 # Read app_list to get url_list
 url_list =  read_list.build_app_dictionary()
 
+apk_url_list = []
+apk_name_list = []
+
 # Get list of file urls
 for url in url_list:
-    find_apk.get_apk(url)
+  apk_url_list.append(find_apk.get_apk(url))
 
+i = 0
 # Download files
+for apk in apk_url_list:
+    download.download(apk, i)
+    i = i + 1

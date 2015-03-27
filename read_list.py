@@ -10,10 +10,9 @@ def read_list():
   app_list = f.readlines()
   f.close()
 
-def extract_url(line):
+def extract_info(line):
+  # name = string.split(line, ":", 1)[0].strip()
   url = string.split(line, ":", 1)[1].strip()
-  # if (url.endswith('\n')):
-    # url = url[:-2]
   return url
 
 
