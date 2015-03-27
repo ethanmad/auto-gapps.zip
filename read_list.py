@@ -11,7 +11,6 @@ def read_list():
   f.close()
 
 def extract_info(line):
-  # name = string.split(line, ":", 1)[0].strip()
   url = string.split(line, ":", 1)[1].strip()
   return url
 
@@ -23,5 +22,5 @@ def build_app_dictionary():
     if line.isspace():
       continue
     global url_list
-    url_list.append(extract_url(line))
+    url_list.append(extract_info(line))
   return url_list
