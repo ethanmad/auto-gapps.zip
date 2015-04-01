@@ -1,4 +1,4 @@
-import read_list, download
+import read_list, download, make_zip
 import find_apk
 
 # This script runs the other scripts.
@@ -11,15 +11,17 @@ import find_apk
 # Read app_list to get url_list
 url_list =  read_list.build_app_dictionary()
 
-apk_url_list = []
-apk_name_list = []
+apk_list = []
 
 # Get list of file urls
 for url in url_list:
-  apk_url_list.append(find_apk.get_apk(url))
+    apk_list.append(find_apk.get_apk(url))
 
 i = 0
 # Download files
-for apk in apk_url_list:
+for apk in apk_list:
     download.download(apk, i)
     i = i + 1
+
+# Zip 'em
+make_zip.zipdir('gapps')
