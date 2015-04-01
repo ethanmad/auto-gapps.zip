@@ -1,5 +1,4 @@
-import read_list, download, make_zip
-import find_apk
+import read_list, download, make_zip, find_apk, errno, shutil
 
 # This script runs the other scripts.
 # Sequence is as follows:
@@ -23,5 +22,22 @@ for apk in apk_list:
     download.download(apk, i)
     i = i + 1
 
+# Move the files to make the zip flashable
+def copy(src, dest):
+    try:
+        shutil.copytree(src, dest)
+    except OSError as e:
+        # If the error was caused because the source wasn't a directory
+        if e.errno == errno.ENOTDIR:
+            shutil.copy(src, dst)
+        else:
+            print('Directory not copied. Error: %s' % e)
+
+copy('sample.zip/META-INF', 'gapps/META-INF')
+copy('sample.zip/system', 'gapps/system')
+
 # Zip 'em
 make_zip.zipdir('gapps')
+
+# Clean up
+shutil.rmtree('gapps')

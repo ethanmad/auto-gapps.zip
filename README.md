@@ -5,12 +5,13 @@ In progress.
 
 
 # Dependencies
-[Beautiful Soup 4](http://www.crummy.com/software/BeautifulSoup/): `# pip install beautifulsoup4`
+- [Python] (2 or 3)
+- [Beautiful Soup 4](http://www.crummy.com/software/BeautifulSoup/): `# pip install beautifulsoup4`
 
 
 # Todo
 - [x] use urllib to download APKs
 - [x] parse APK Mirror pages for latest upload
-- [ ] sequentially download APKs from list of urls and names
+- [x] sequentially download APKs from list of urls and names
 - [ ] make flashable ZIPs
 - [ ] run script weekly on Wednesday night
